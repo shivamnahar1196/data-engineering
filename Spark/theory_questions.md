@@ -8,7 +8,7 @@
   6. **In-memory processing**: Spark can cache data in memory, which speeds up iterative algorithms and interactive data analysis.
   7. **Fault tolerance**: Spark has built-in fault tolerance, which ensures that data processing tasks can recover from failures without losing data.
 ----
-### Q2. What are spark drivers and executers?
+### Q2. What are spark drivers and executors?
   In Apache Spark, the driver and executors are key components that work together to execute a Spark application:
   1. **Driver**: The driver is the central coordinator of a Spark application. It is responsible for converting the user's program into tasks, scheduling tasks on executors, and aggregating results from the executors to deliver back to the user's program. The driver stores the information about the Spark application, and it communicates with the cluster manager to negotiate resources for executors.
   2. **Executors**: Executors are worker processes responsible for executing the tasks assigned by the driver. Each executor runs multiple tasks in multiple threads. Executors perform the actual data processing and store the computation results in memory, cache, or on disk. They also report the status of the computation back to the driver.
@@ -118,3 +118,76 @@
   - **External Tools**: Tools like Ganglia, Prometheus, or Grafana can be integrated with Spark for enhanced monitoring.
   
   By systematically addressing these areas, you can identify the root causes of performance issues and apply appropriate fixes to optimize your Spark jobs.
+    ----
+### Q6. Use of to_json and from_json in Spark ?
+  **from_json**
+  Purpose: Converts a JSON string into a StructType (complex structure) or MapType (key-value pairs) in a DataFrame column.
+
+      from pyspark.sql import SparkSession
+      from pyspark.sql.functions import from_json, col
+      from pyspark.sql.types import StructType, StructField, StringType
+      
+      # Initialize Spark session
+      spark = SparkSession.builder.appName("from_json Example").getOrCreate()
+      
+      # Sample data
+      data = [("1", '{"name": "John", "age": "30"}')]
+      df = spark.createDataFrame(data, ["id", "json_string"])
+      
+      # Define the schema for the JSON data
+      schema = StructType([
+          StructField("name", StringType(), True),
+          StructField("age", StringType(), True)
+      ])
+      
+      # Parse the JSON string
+      parsed_df = df.withColumn("parsed", from_json(col("json_string"), schema))
+      parsed_df.show(truncate=False)
+      result_df = parsed_df.select("id", "parsed.*")
+      # Show the result
+      result_df.show()
+
+ Output:
+ parsed_df: 
+ 
+    +---+-----------------------------+----------+
+    |id |json_string                  |parsed    |
+    +---+-----------------------------+----------+
+    |1  |{"name": "John", "age": "30"}|{John, 30}|
+    +---+-----------------------------+----------+
+
+result_df:
+
+    +---+----+---+
+    | id|name|age|
+    +---+----+---+
+    |  1|John| 30|
+    +---+----+---+
+
+  **to_json**
+  Purpose: Converts a Spark DataFrame column of type StructType or MapType into a JSON string.
+
+      from pyspark.sql import SparkSession
+      from pyspark.sql.functions import to_json, struct
+      
+      # Initialize Spark session
+      spark = SparkSession.builder.appName("to_json Example").getOrCreate()
+      
+      # Sample data
+      data = [("John", "30"), ("Jane", "25")]
+      df = spark.createDataFrame(data, ["name", "age"])
+      
+      # Convert columns to a JSON string
+      json_df = df.withColumn("employee_info", to_json(struct("name", "age")))
+      
+      # Show the result
+      json_df.show(truncate=False)  
+      
+json_df:
+
+    +----+---+--------------------------+
+    |name|age|employee_info             |
+    +----+---+--------------------------+
+    |John|30 |{"name":"John","age":"30"}|
+    |Jane|25 |{"name":"Jane","age":"25"}|
+    +----+---+--------------------------+
