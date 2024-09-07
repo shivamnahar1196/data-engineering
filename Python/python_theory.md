@@ -1,7 +1,7 @@
-# Python Reference
+# Python Refresher
 
-## Resources
-- [The Ultimate Python Handbook](https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20Python%20Handbook.pdf)
+## Resources 
+- [Harry: The Ultimate Python Handbook](https://cwh-full-next-space.fra1.cdn.digitaloceanspaces.com/YouTube/The%20Ultimate%20Python%20Handbook.pdf)
 
 ## Data Types
 
@@ -491,9 +491,6 @@ Certainly! Here's the code converted into the same Markdown format:
       # Fly!
     ```
 
-Certainly! Here's the content formatted as a Markdown file, similar to the previous style:
-
-```markdown
 ## Scope:
 
 - **Naming Variables:**
