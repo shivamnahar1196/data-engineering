@@ -878,4 +878,65 @@ Certainly! Here's the code converted into the same Markdown format:
   - **As of Python version 3.7, dictionaries are ordered. In Python 3.6 and earlier, dictionaries are unordered.
     
 ---
-    
+## Functions: first-class objects:
+[first-class objects](https://colab.research.google.com/drive/1YYJIQ3LgTLipJx9mg1nwwfLpjp7yGxhl#scrollTo=qK0IGbw5kqBF)
+
+In Python, functions are called "first-class objects" because they possess all the properties of first-class citizens in programming languages. Specifically, this means that functions in Python:
+
+1. **Can be Assigned to Variables**: Functions can be assigned to variables, just like any other object. For example:
+   ```python
+   def greet(name):
+       return f"Hello, {name}!"
+   
+   greeting = greet  # Assigning the function to a variable
+   print(greeting("Alice"))  # Output: Hello, Alice!
+   ```
+
+2. **Can Be Passed as Arguments**: Functions can be passed as arguments to other functions. This allows for higher-order functions and functional programming techniques. For example:
+   ```python
+   def apply_function(func, value):
+       return func(value)
+   
+   def square(x):
+       return x * x
+   
+   result = apply_function(square, 5)  # Passing the function `square` as an argument
+   print(result)  # Output: 25
+   ```
+
+3. **Can Be Returned from Other Functions**: Functions can be created and returned from other functions. This is often used in function factories or decorators. For example:
+   ```python
+   def multiplier(factor):
+       def multiply(x):
+           return x * factor
+       return multiply
+   
+   double = multiplier(2)  # `double` is now a function that multiplies its input by 2
+   print(double(10))  # Output: 20
+   ```
+
+4. **Can Be Stored in Data Structures**: Functions can be stored in data structures like lists, tuples, or dictionaries. For example:
+   ```python
+   def add(x, y):
+       return x + y
+
+   def subtract(x, y):
+       return x - y
+
+   operations = [add, subtract]  # Storing functions in a list
+   print(operations[0](5, 3))  # Output: 8 (calling `add` function)
+   print(operations[1](5, 3))  # Output: 2 (calling `subtract` function)
+   ```
+
+5. **Can Have Attributes and Methods**: Functions can have attributes and methods just like objects. For instance, you can add attributes to functions:
+   ```python
+   def my_function():
+       pass
+
+   my_function.description = "This is a custom function"
+   print(my_function.description)  # Output: This is a custom function
+   ```
+
+### Summary
+
+The term "first-class object" or "first-class citizen" refers to entities in a programming language that can be manipulated in the same way as other values, such as integers or strings. In Python, because functions can be assigned to variables, passed around, returned from other functions, and stored in data structures, they exhibit the characteristics of first-class objects. This flexibility makes Python a powerful and expressive language for various programming paradigms.    
