@@ -936,6 +936,21 @@ In Python, functions are called "first-class objects" because they possess all t
    my_function.description = "This is a custom function"
    print(my_function.description)  # Output: This is a custom function
    ```
+  
+    ```python
+     def my_function():
+      pass
+    
+    # Define a method as a function and attach it to the function
+    def greet(self, name):
+        return f"Hello, {name}! I'm a method on a function."
+    
+    # Attach the method to the function
+    my_function.greet = greet.__get__(None, my_function)  # Using __get__ to bind method to the function
+    
+    # Call the method on the function object
+    print(my_function.greet("Alice"))  # Output: Hello, Alice! I'm a method on a function.
+    ```
 
 ### Summary
 
