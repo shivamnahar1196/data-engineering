@@ -138,7 +138,8 @@
   
   This structure reduces redundancy and improves data integrity. Let me know if you need further clarification! 
   
---  
+---
+
 ### 2. Denormalization
   
   **Denormalization** is the process of combining normalized tables back into larger tables. This is often done to improve read performance by reducing the number of joins needed in queries.
