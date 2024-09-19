@@ -240,8 +240,6 @@
           print(p1.name) #John
           print(p1.age) #36
 
-Certainly! Here's the code converted into the same Markdown format:
-
 - The `__str__()` Function:
   - The `__str__()` function controls what should be returned when the class object is represented as a string.
   - If the `__str__()` function is not defined, the default string representation of the object is returned:
