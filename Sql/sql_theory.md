@@ -136,7 +136,7 @@
   2. **2NF:** Non-key attributes fully depend on the primary key (no partial dependency).
   3. **3NF:** No transitive dependencies among non-key attributes.
   
-  This structure reduces redundancy and improves data integrity. Let me know if you need further clarification! 
+  This structure reduces redundancy and improves data integrity.
   
 ---
 
