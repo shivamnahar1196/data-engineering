@@ -118,7 +118,9 @@
   - **External Tools**: Tools like Ganglia, Prometheus, or Grafana can be integrated with Spark for enhanced monitoring.
   
   By systematically addressing these areas, you can identify the root causes of performance issues and apply appropriate fixes to optimize your Spark jobs.
-    ----
+  
+----
+    
 ### Q6. Use of to_json and from_json in Spark ?
   **from_json**
   Purpose: Converts a JSON string into a StructType (complex structure) or MapType (key-value pairs) in a DataFrame column.
@@ -191,3 +193,47 @@ json_df:
     |John|30 |{"name":"John","age":"30"}|
     |Jane|25 |{"name":"Jane","age":"25"}|
     +----+---+--------------------------+
+
+----    
+
+### Q7. What is the advantage of using SPARK SQL and what spark sql does not supports ?
+
+SPARK SQL is a component of Apache Spark that allows users to run SQL queries on large datasets. Here are some advantages and limitations of using SPARK SQL:
+
+### Advantages of SPARK SQL:
+
+1. **Unified Data Processing**: SPARK SQL integrates with Spark’s other components, allowing users to combine SQL queries with data processing in other languages like Python, Java, and Scala.
+
+2. **Performance**: It uses a cost-based optimizer (Catalyst) and in-memory computation to optimize query execution, making it faster than traditional databases.
+
+3. **Data Sources**: SPARK SQL supports various data sources such as Hive, Avro, Parquet, ORC, JSON, and JDBC, making it versatile for different data types.
+
+4. **Scalability**: Built on top of Spark’s distributed computing capabilities, SPARK SQL can handle large-scale data processing across clusters.
+
+5. **Interoperability with Hive**: It provides compatibility with Apache Hive, enabling users to execute existing Hive queries and use Hive’s metastore.
+
+6. **DataFrame API**: SPARK SQL includes the DataFrame API, which allows for a more programmatic way to handle structured data while still supporting SQL queries.
+
+7. **Integration with BI Tools**: SPARK SQL can connect with various Business Intelligence tools, allowing for easy data visualization and analysis.
+   
+8. **Schema on Read**: SPARK SQL doesn't load the complete data. It reads from the source by just passing the schema.
+
+### Limitations of SPARK SQL:
+
+1. **Full SQL Compliance**: SPARK SQL does not support all features of standard SQL, such as certain complex subqueries or window functions in all scenarios.
+
+2. **Real-time Processing**: While SPARK SQL is powerful for batch processing, it is not optimized for real-time streaming data processing compared to systems specifically designed for that purpose (like Apache Flink).
+
+3. **Materialized Views**: SPARK SQL lacks support for materialized views, which can limit performance optimization for certain types of queries.
+
+4. **Limited Indexing**: Unlike traditional databases, SPARK SQL does not support advanced indexing mechanisms, which can impact query performance for certain operations.
+
+5. **Data Manipulation**: While SPARK SQL allows for some DML operations (like INSERT and UPDATE), it is less robust than traditional relational databases in this area.
+
+6. **Does not support Unity catalog**
+   
+7. **Does not support Stored procedures and functions**
+    
+8. **Does not support referential integrity**
+
+Overall, SPARK SQL is a powerful tool for processing and querying large datasets, but it may not be suitable for every use case, especially those requiring strict SQL compliance or real-time data processing.
